@@ -6,7 +6,7 @@ import { ReactComponent as User } from '../assets/user.svg'
 import { ReactComponent as Vibrate } from '../assets/vibrate.svg'
 import { ReactComponent as Controller } from '../assets/game-controller.svg'
 
-function InfoContainer () {
+function Footer () {
   return (
     <footer className='flex gap-8'>
         <InfoCard
@@ -33,4 +33,4 @@ function InfoContainer () {
   )
 }
 
-export { InfoContainer }
+export { Footer }

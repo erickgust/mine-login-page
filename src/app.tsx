@@ -1,5 +1,5 @@
 import { Header } from './components/header'
-import { InfoContainer } from './components/info-container'
+import { Footer } from './components/footer'
 import { Input } from './components/input'
 
 function App () {
@@ -9,7 +9,6 @@ function App () {
       flex flex-col justify-between items-center'
     >
       <Header />
-      <InfoContainer/>
 
       <form>
         <Input
@@ -18,6 +17,9 @@ function App () {
           type='email'
         />
       </form>
+
+      <Footer />
+
     </main>
   )
 }
