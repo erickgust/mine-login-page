@@ -1,5 +1,6 @@
 import { Header } from './components/header'
 import { InfoContainer } from './components/info-container'
+import { Input } from './components/input'
 
 function App () {
   return (
@@ -9,6 +10,14 @@ function App () {
     >
       <Header />
       <InfoContainer/>
+
+      <form>
+        <Input
+          title='E-mail'
+          placeholder='iuricode@mail.com'
+          type='email'
+        />
+      </form>
     </main>
   )
 }

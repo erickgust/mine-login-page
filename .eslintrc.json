@@ -37,6 +37,7 @@
         "functions": "always-multiline"
       }
     ],
+    "jsx-quotes": ["error", "prefer-single"],
     "no-undef": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-pascal-case": "off",
