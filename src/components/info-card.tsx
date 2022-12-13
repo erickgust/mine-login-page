@@ -7,10 +7,10 @@ type InfoCardProps = {
 
 function InfoCard ({ logo, title }: InfoCardProps) {
   return (
-    <article className="inline-flex flex-col items-center">
+    <article className='inline-flex flex-col items-center'>
       {logo}
 
-      <span className="font-normal text-lg text-white mt-3 inline-block">
+      <span className='font-normal text-lg text-white mt-3 inline-block'>
         {title}
       </span>
       </article>

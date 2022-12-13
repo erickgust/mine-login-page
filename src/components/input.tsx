@@ -11,7 +11,7 @@ function Input ({ title, placeholder, type }: InputProps) {
       <input
         className='
           bg-neutral-800 py-2 px-4 rounded border border-neutral-700
-          placeholder:text-slate-400 text-white font-["Inter"]
+          placeholder:text-slate-400 text-white font-["Inter"] mb-6
         '
         type={type}
         name={type}

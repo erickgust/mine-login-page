@@ -5,7 +5,7 @@ function Header () {
   return (
     <header className='flex flex-col justify-center items-center'>
       <div className='mb-4'>
-        <img src={logo} alt="Logo Mine" />
+        <img src={logo} alt='Logo Mine' />
       </div>
 
       <ul className='flex gap-2'>
