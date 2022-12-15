@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 function Header () {
   return (
     <header className='flex flex-col justify-center items-center'>
-      <div className='mb-4'>
+      <div className='mb-8'>
         <img src={logo} alt='Logo Mine' />
       </div>
 
