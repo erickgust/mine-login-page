@@ -7,11 +7,11 @@ type InputProps = {
 function Input ({ title, placeholder, type }: InputProps) {
   return (
     <>
-      <label className='text-white block pb-1' htmlFor={type}>{title}</label>
+      <label className='text-white font-medium block pb-1' htmlFor={type}>{title}</label>
       <input
         className='
-          bg-neutral-800 py-2 px-4 rounded border border-neutral-700
-          placeholder:text-slate-400 text-white font-["Inter"] mb-6
+          bg-neutral-800 py-2 px-4 rounded border border-neutral-700 text-sm
+          placeholder:text-slate-400 text-white font-["Inter"] mb-6 w-full
         '
         type={type}
         name={type}
