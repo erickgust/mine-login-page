@@ -9,8 +9,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'mine-background': `
-          linear-gradient(to top, rgba(18, 18, 18), rgba(18, 18, 18, 0.7) 15%, transparent 30%),
-          linear-gradient(to bottom, rgba(18, 18, 18), rgba(18, 18, 18, 0.7) 15%, transparent 30%),
+          linear-gradient(to top, rgba(18, 18, 18), rgba(18, 18, 18, 0.7) 18%, transparent 40%),
+          linear-gradient(to bottom, rgba(18, 18, 18), rgba(18, 18, 18, 0.7) 18%, transparent 40%),
           url('./src/assets/background.jpg')
         `,
       },

@@ -7,8 +7,9 @@ function App () {
   return (
     <>
       <div className='bg-mine-background bg-no-repeat bg-cover h-full w-full fixed -z-10' />
+      <div className='max-sm:backdrop-brightness-50 h-full w-full fixed z-0' />
       <main
-        className='flex flex-col justify-center items-center py-10'
+        className='flex flex-col justify-between items-center py-10 z-10 relative'
       >
         <Header />
 

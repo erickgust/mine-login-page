@@ -8,7 +8,7 @@ function Header () {
         <img src={logo} alt='Logo Mine' />
       </div>
 
-      <ul className='flex gap-2'>
+      <ul className='flex md:gap-2 gap-1'>
         <li><Link title='Entrar' /></li>
         <li><Link title='Forum' /></li>
         <li><Link title='Sobre' /></li>

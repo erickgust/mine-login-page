@@ -8,7 +8,7 @@ import { ReactComponent as Controller } from '../assets/game-controller.svg'
 
 function Footer () {
   return (
-    <footer className='flex gap-8'>
+    <footer className='flex gap-10 flex-wrap justify-center pb-10'>
         <InfoCard
           logo={<Power title='Botão de desligar' />}
           title='Jogue também offline'
