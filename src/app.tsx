@@ -6,7 +6,7 @@ function App () {
   return (
     <>
       <div className='
-        bg-mine-background bg-no-repeat bg-cover
+        bg-mine-background bg-no-repeat bg-cover bg-center
         min-h-screen w-full fixed
         max-sm:after:bg-neutral-900/75 after:min-h-screen after:w-full after:fixed
       '/>
