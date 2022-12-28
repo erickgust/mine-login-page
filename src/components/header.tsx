@@ -6,7 +6,7 @@ function Header () {
   return (
     <header className='flex w-full items-center justify-between sm:flex-col sm:justify-center'>
       <div className='sm:mb-8'>
-        <img src={logo} alt='Logo Mine'/>
+        <img src={logo} alt='Logo Mine' className='max-sm:h-11'/>
       </div>
 
       <ul className='hidden sm:flex md:gap-2'>
