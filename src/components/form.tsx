@@ -27,6 +27,20 @@ function Form () {
     }
   }
 
+  function handlePasswordChange (value: string) {
+    setPassword(value)
+
+    if (value && value.length < 6) {
+      const errorAlreadyExists = errors.find(error => error.field === 'password')
+
+      if (errorAlreadyExists) return
+
+      setErrors(errors => [...errors, { field: 'password', message: 'Senha muito curta' }])
+    } else {
+      setErrors(errors => errors.filter(error => error.field !== 'password'))
+    }
+  }
+
   function getErrorMessageByFieldName (fieldName: string) {
     const error = errors.find(error => error.field === fieldName)
 
@@ -53,7 +67,7 @@ function Form () {
         type='password'
         error={getErrorMessageByFieldName('password')}
         value={password}
-        onChange={setPassword}
+        onChange={handlePasswordChange}
       />
 
       <CheckboxInput label='Lembrar minha senha' />
