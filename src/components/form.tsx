@@ -5,9 +5,11 @@ import { CheckboxInput } from './checkbox-input'
 import { Input } from './input'
 
 function Form () {
-  const { setError, removeError, getErrorMessageByFieldName } = useErrors()
+  const { errors, setError, removeError, getErrorMessageByFieldName } = useErrors()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const isFormValid = !!(email && password && errors.length === 0)
 
   function handleEmailChange (value: string) {
     setEmail(value)
@@ -59,9 +61,11 @@ function Form () {
         className='
           font-semibold text-white text-xl rounded-md
           shadow-[0px_2px_0px_rgba(255,255,255),inset_0px_2px_0px_rgba(255,255,255,0.4)]
-          w-full py-3 bg-gradient-to-r from-[#22AE75] to-[#00874F] my-8
-          active:brightness-75 transition-all duration-150
+          w-full py-3 bg-[#22AE75] my-8
+          active:brightness-75 transition-all duration-150 cursor-pointer
+          disabled:bg-neutral-600 disabled:cursor-not-allowed
         '
+        disabled={!isFormValid}
       >
         Entrar na conta
       </button>

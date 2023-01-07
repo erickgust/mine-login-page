@@ -26,7 +26,7 @@ function useErrors () {
     return error?.message
   }
 
-  return { setError, removeError, getErrorMessageByFieldName }
+  return { errors, setError, removeError, getErrorMessageByFieldName }
 }
 
 export { useErrors }
