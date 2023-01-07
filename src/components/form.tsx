@@ -12,11 +12,13 @@ function Form () {
             title='E-mail'
             placeholder='iuricode@mail.com'
             type='email'
+            error='E-mail inválido'
           />
           <Input
             title='Senha'
             placeholder='0123456789'
             type='password'
+            error='Senha inválida'
           />
 
           <CheckboxInput label='Lembrar minha senha' />
