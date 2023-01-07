@@ -3,9 +3,11 @@ type InputProps = {
   placeholder: string
   type: 'email' | 'password'
   error?: string
+  value: string
+  onChange: (value: string) => void
 }
 
-function Input ({ title, placeholder, type, error }: InputProps) {
+function Input ({ title, placeholder, type, error, value, onChange }: InputProps) {
   return (
     <div className='mb-6'>
       <label className='text-white font-medium block pb-1' htmlFor={type}>{title}</label>
@@ -20,6 +22,8 @@ function Input ({ title, placeholder, type, error }: InputProps) {
         name={type}
         id={type}
         placeholder={placeholder}
+        value={value}
+        onChange={e => onChange(e.target.value)}
       />
       {!!error && <small className='text-red-400 font-medium mt-1 block'>{error}</small>}
     </div>

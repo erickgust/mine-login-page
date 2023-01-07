@@ -1,7 +1,38 @@
+import { isEmailValid } from '@/utils/isEmailValid'
+import { useState } from 'react'
 import { CheckboxInput } from './checkbox-input'
 import { Input } from './input'
 
+type Error = {
+  field: string
+  message: string
+}
+
 function Form () {
+  const [errors, setErrors] = useState<Error[]>([])
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  function handleEmailChange (value: string) {
+    setEmail(value)
+
+    if (value && !isEmailValid(value)) {
+      const errorAlreadyExists = errors.find(error => error.field === 'email')
+
+      if (errorAlreadyExists) return
+
+      setErrors(errors => [...errors, { field: 'email', message: 'E-mail inválido' }])
+    } else {
+      setErrors(errors => errors.filter(error => error.field !== 'email'))
+    }
+  }
+
+  function getErrorMessageByFieldName (fieldName: string) {
+    const error = errors.find(error => error.field === fieldName)
+
+    return error?.message
+  }
+
   return (
     <form className='my-12 px-9 py-6 bg-neutral-900/80 backdrop-blur-sm rounded-xl border border-neutral-500/50 max-w-md w-full'>
       <div className='flex justify-center pb-2'>
@@ -12,13 +43,17 @@ function Form () {
         title='E-mail'
         placeholder='iuricode@mail.com'
         type='email'
-        error='E-mail inválido'
+        error={getErrorMessageByFieldName('email')}
+        value={email}
+        onChange={handleEmailChange}
       />
       <Input
         title='Senha'
         placeholder='0123456789'
         type='password'
-        error='Senha inválida'
+        error={getErrorMessageByFieldName('password')}
+        value={password}
+        onChange={setPassword}
       />
 
       <CheckboxInput label='Lembrar minha senha' />
