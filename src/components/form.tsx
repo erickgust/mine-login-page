@@ -1,15 +1,11 @@
+import { useErrors } from '@/hooks/use-errors'
 import { isEmailValid } from '@/utils/isEmailValid'
 import { useState } from 'react'
 import { CheckboxInput } from './checkbox-input'
 import { Input } from './input'
 
-type Error = {
-  field: string
-  message: string
-}
-
 function Form () {
-  const [errors, setErrors] = useState<Error[]>([])
+  const { setError, removeError, getErrorMessageByFieldName } = useErrors()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -17,13 +13,9 @@ function Form () {
     setEmail(value)
 
     if (value && !isEmailValid(value)) {
-      const errorAlreadyExists = errors.find(error => error.field === 'email')
-
-      if (errorAlreadyExists) return
-
-      setErrors(errors => [...errors, { field: 'email', message: 'E-mail inválido' }])
+      setError({ field: 'email', message: 'E-mail inválido' })
     } else {
-      setErrors(errors => errors.filter(error => error.field !== 'email'))
+      removeError('email')
     }
   }
 
@@ -31,20 +23,10 @@ function Form () {
     setPassword(value)
 
     if (value && value.length < 6) {
-      const errorAlreadyExists = errors.find(error => error.field === 'password')
-
-      if (errorAlreadyExists) return
-
-      setErrors(errors => [...errors, { field: 'password', message: 'Senha muito curta' }])
+      setError({ field: 'password', message: 'Senha muito curta' })
     } else {
-      setErrors(errors => errors.filter(error => error.field !== 'password'))
+      removeError('password')
     }
-  }
-
-  function getErrorMessageByFieldName (fieldName: string) {
-    const error = errors.find(error => error.field === fieldName)
-
-    return error?.message
   }
 
   return (
