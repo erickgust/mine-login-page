@@ -1,6 +1,6 @@
 import { useErrors } from '@/hooks/use-errors'
 import { isEmailValid } from '@/utils/isEmailValid'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { CheckboxInput } from './checkbox-input'
 import { Input } from './input'
 import { Modal } from './modal'
@@ -33,9 +33,7 @@ function Form () {
     }
   }
 
-  function handleModalClose () {
-    setIsOpen(false)
-  }
+  const handleModalClose = useCallback(() => setIsOpen(false), [])
 
   function handleModalOpen () {
     setIsOpen(true)

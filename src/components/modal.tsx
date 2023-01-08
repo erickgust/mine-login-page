@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { ReactComponent as Checked } from '@/assets/checked.svg'
 import { ReactComponent as CloseIcon } from '@/assets/close.svg'
@@ -8,6 +9,32 @@ type ModalProps = {
 }
 
 function Modal ({ isOpen, onClose }: ModalProps) {
+  useEffect(() => {
+    function handleEscape (event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [onClose])
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    const timeout = setTimeout(() => {
+      onClose()
+    }, 3000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [isOpen, onClose])
+
   if (!isOpen) return null
 
   return createPortal((
