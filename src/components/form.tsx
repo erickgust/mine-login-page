@@ -3,8 +3,10 @@ import { isEmailValid } from '@/utils/isEmailValid'
 import { useState } from 'react'
 import { CheckboxInput } from './checkbox-input'
 import { Input } from './input'
+import { Modal } from './modal'
 
 function Form () {
+  const [isOpen, setIsOpen] = useState(false)
   const { errors, setError, removeError, getErrorMessageByFieldName } = useErrors()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,8 +33,24 @@ function Form () {
     }
   }
 
+  function handleModalClose () {
+    setIsOpen(false)
+  }
+
+  function handleModalOpen () {
+    setIsOpen(true)
+  }
+
+  function handleSubmit (event: React.FormEvent) {
+    event.preventDefault()
+
+    if (isFormValid) {
+      handleModalOpen()
+    }
+  }
+
   return (
-    <form className='my-12 px-9 py-6 bg-neutral-900/80 backdrop-blur-sm rounded-xl border border-neutral-500/50 max-w-md w-full'>
+    <form onSubmit={handleSubmit} className='my-12 px-9 py-6 bg-neutral-900/80 backdrop-blur-sm rounded-xl border border-neutral-500/50 max-w-md w-full'>
       <div className='flex justify-center pb-2'>
         <img src='/mine.png' alt='Logo Mine' />
       </div>
@@ -61,9 +79,8 @@ function Form () {
         className='
           font-semibold text-white text-xl rounded-md
           shadow-[0px_2px_0px_rgba(255,255,255),inset_0px_2px_0px_rgba(255,255,255,0.4)]
-          w-full py-3 bg-[#22AE75] my-8
-          active:brightness-75 transition-all duration-150 cursor-pointer
-          disabled:bg-neutral-600 disabled:cursor-not-allowed
+          w-full py-3 bg-[#22AE75] my-8 transition-all duration-150 cursor-pointer
+          active:brightness-75 disabled:bg-neutral-600 disabled:cursor-not-allowed
         '
         disabled={!isFormValid}
       >
@@ -75,6 +92,8 @@ function Form () {
           Esqueceu a senha?
         </p>
       </a>
+
+      <Modal isOpen={isOpen} onClose={handleModalClose} />
     </form>
   )
 }
